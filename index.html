@@ -4,7 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UXCore Framework Demo</title>
+
+    <!-- Primary Meta Tags -->
+    <title>UXCore - Modern UI Framework | JavaScript & CSS Components</title>
+    <meta name="title" content="UXCore - Modern UI Framework | JavaScript & CSS Components">
+    <meta name="description"
+        content="UXCore is a lightweight, modern UI framework built with vanilla JavaScript and CSS. Includes buttons, modals, tabs, accordions, toasts, cards, and more. Zero dependencies, easy to customize.">
+    <meta name="keywords"
+        content="UI framework, CSS framework, JavaScript components, vanilla JS, modals, tabs, accordion, toast notifications, form controls, dropdown, responsive grid, web components, frontend framework">
+    <meta name="author" content="UXCore">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://leandrolopes13.github.io/uxcore/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://leandrolopes13.github.io/uxcore/">
+    <meta property="og:title" content="UXCore - Modern UI Framework | JavaScript & CSS Components">
+    <meta property="og:description"
+        content="Lightweight UI framework with vanilla JavaScript and CSS. Buttons, modals, tabs, accordions, toasts, and more. Zero dependencies.">
+    <meta property="og:image" content="https://leandrolopes13.github.io/uxcore/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="UXCore">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://leandrolopes13.github.io/uxcore/">
+    <meta name="twitter:title" content="UXCore - Modern UI Framework | JavaScript & CSS Components">
+    <meta name="twitter:description"
+        content="Lightweight UI framework with vanilla JavaScript and CSS. Buttons, modals, tabs, accordions, toasts, and more. Zero dependencies.">
+    <meta name="twitter:image" content="https://leandrolopes13.github.io/uxcore/og-image.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-TileColor" content="#6366f1">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "UXCore",
+        "description": "A modern, minimalist UI framework built with vanilla JavaScript and CSS. Includes buttons, modals, tabs, accordions, toasts, form controls, and more.",
+        "url": "https://leandrolopes13.github.io/uxcore/",
+        "codeRepository": "https://github.com/leandrolopes13/uxcore",
+        "programmingLanguage": ["JavaScript", "CSS", "HTML"],
+        "license": "https://opensource.org/licenses/MIT",
+        "author": {
+            "@type": "Person",
+            "name": "Leandro Lopes"
+        },
+        "keywords": "UI framework, CSS, JavaScript, components, modals, tabs, accordion",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://leandrolopes13.github.io/uxcore/"
+        }]
+    }
+    </script>
 
     <!-- CSS Imports -->
     <link rel="stylesheet" href="uxcore.min.css">
@@ -114,28 +189,38 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="ux-navbar">
-        <a href="#" class="ux-navbar-brand">UXCore</a>
-        <ul class="ux-navbar-nav">
-            <li><a href="#buttons" class="ux-navbar-link is-active">Buttons</a></li>
-            <li><a href="#forms" class="ux-navbar-link">Forms</a></li>
-            <li><a href="#select" class="ux-navbar-link">Select</a></li>
-            <li><a href="#modal" class="ux-navbar-link">Modal</a></li>
-            <li><a href="#accordion" class="ux-navbar-link">Accordion</a></li>
-        </ul>
-        <button class="ux-navbar-toggle">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                </path>
-            </svg>
-        </button>
-    </nav>
+    <header>
+        <nav class="ux-navbar" role="navigation" aria-label="Main navigation">
+            <a href="#" class="ux-navbar-brand" aria-label="UXCore Home">UXCore</a>
+            <ul class="ux-navbar-nav">
+                <li><a href="#buttons" class="ux-navbar-link is-active">Buttons</a></li>
+                <li><a href="#forms" class="ux-navbar-link">Forms</a></li>
+                <li><a href="#select" class="ux-navbar-link">Select</a></li>
+                <li><a href="#modal" class="ux-navbar-link">Modal</a></li>
+                <li><a href="#accordion" class="ux-navbar-link">Accordion</a></li>
+            </ul>
+            <button class="ux-navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+    </header>
 
     <main class="ux-container">
 
+        <!-- Hero Section with H1 -->
+        <section class="demo-section" style="text-align: center; padding: var(--ux-space-16) 0;">
+            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: var(--ux-space-4);">UXCore UI Framework</h1>
+            <p class="ux-text-muted" style="font-size: 1.125rem; max-width: 600px; margin: 0 auto;">A modern,
+                lightweight UI framework built with vanilla JavaScript and CSS. Zero dependencies, easy to customize.
+            </p>
+        </section>
+
         <!-- Grid System Section -->
-        <section class="demo-section" id="grid">
-            <h2>Grid System</h2>
+        <section class="demo-section" id="grid" aria-labelledby="grid-heading">
+            <h2 id="grid-heading">Grid System</h2>
             <p class="ux-text-muted">Responsive 12-column CSS Grid layout system.</p>
 
             <!-- Grid Demo -->
