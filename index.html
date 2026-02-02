@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UXCore Framework Demo</title>
+
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="dist/uxcore.min.css">
+
+    <style>
+        .demo-section {
+            padding: var(--ux-space-12) 0;
+            border-bottom: 1px solid var(--ux-color-border);
+        }
+
+        .demo-section:last-child {
+            border-bottom: none;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--ux-space-8);
+            margin-top: var(--ux-space-6);
+        }
+
+        .demo-box {
+            padding: var(--ux-space-4);
+            background: var(--ux-color-primary-fade);
+            border-radius: var(--ux-radius-md);
+            text-align: center;
+            font-size: var(--ux-text-sm);
+            color: var(--ux-color-primary);
+        }
+
+        /* Code block styles */
+        .code-example {
+            margin-top: var(--ux-space-6);
+            background-color: #1e1e2e;
+            border-radius: var(--ux-radius-md);
+            overflow: hidden;
+        }
+
+        .code-example-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--ux-space-3) var(--ux-space-4);
+            background-color: #2a2a3e;
+            border-bottom: 1px solid #3a3a4e;
+        }
+
+        .code-example-label {
+            font-size: var(--ux-text-xs);
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .code-example-copy {
+            font-size: var(--ux-text-xs);
+            color: #888;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .code-example-copy:hover {
+            color: #fff;
+        }
+
+        .code-example pre {
+            margin: 0;
+            padding: var(--ux-space-4);
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #cdd6f4;
+        }
+
+        .code-example code {
+            font-family: inherit;
+        }
+
+        /* Syntax highlighting */
+        .token-tag {
+            color: #89b4fa;
+        }
+
+        .token-attr {
+            color: #f9e2af;
+        }
+
+        .token-string {
+            color: #a6e3a1;
+        }
+
+        .token-comment {
+            color: #6c7086;
+        }
+
+        .token-keyword {
+            color: #cba6f7;
+        }
+
+        .token-function {
+            color: #89dceb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="ux-navbar">
+        <a href="#" class="ux-navbar-brand">UXCore</a>
+        <ul class="ux-navbar-nav">
+            <li><a href="#buttons" class="ux-navbar-link is-active">Buttons</a></li>
+            <li><a href="#forms" class="ux-navbar-link">Forms</a></li>
+            <li><a href="#select" class="ux-navbar-link">Select</a></li>
+            <li><a href="#modal" class="ux-navbar-link">Modal</a></li>
+            <li><a href="#accordion" class="ux-navbar-link">Accordion</a></li>
+        </ul>
+        <button class="ux-navbar-toggle">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </button>
+    </nav>
+
+    <main class="ux-container">
+
+        <!-- Grid System Section -->
+        <section class="demo-section" id="grid">
+            <h2>Grid System</h2>
+            <p class="ux-text-muted">Responsive 12-column CSS Grid layout system.</p>
+
+            <!-- Grid Demo -->
+            <div class="ux-row ux-mt-4">
+                <div class="ux-col-12 ux-col-md-6 ux-col-lg-3">
+                    <div class="demo-box">col-12 / md-6 / lg-3</div>
+                </div>
+                <div class="ux-col-12 ux-col-md-6 ux-col-lg-3">
+                    <div class="demo-box">col-12 / md-6 / lg-3</div>
+                </div>
+                <div class="ux-col-12 ux-col-md-6 ux-col-lg-3">
+                    <div class="demo-box">col-12 / md-6 / lg-3</div>
+                </div>
+                <div class="ux-col-12 ux-col-md-6 ux-col-lg-3">
+                    <div class="demo-box">col-12 / md-6 / lg-3</div>
+                </div>
+            </div>
+
+            <div class="ux-row ux-mt-4">
+                <div class="ux-col-12 ux-col-lg-8">
+                    <div class="demo-box">col-12 / lg-8 (main content)</div>
+                </div>
+                <div class="ux-col-12 ux-col-lg-4">
+                    <div class="demo-box">col-12 / lg-4 (sidebar)</div>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-container"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-row"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-col-12 ux-col-md-6 ux-col-lg-4"</span><span class="token-tag">&gt;</span>Column<span class="token-tag">&lt;/div&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-col-12 ux-col-md-6 ux-col-lg-4"</span><span class="token-tag">&gt;</span>Column<span class="token-tag">&lt;/div&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-col-12 ux-col-md-12 ux-col-lg-4"</span><span class="token-tag">&gt;</span>Column<span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-tag">&lt;/div&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+
+            <div class="code-example ux-mt-4">
+                <div class="code-example-header"><span class="code-example-label">CSS Classes Reference</span></div>
+                <pre><code><span class="token-comment">/* Containers */</span>
+<span class="token-attr">.ux-container</span>       <span class="token-comment">/* Max-width 1280px, centered */</span>
+<span class="token-attr">.ux-container-fluid</span> <span class="token-comment">/* Full width */</span>
+
+<span class="token-comment">/* Row */</span>
+<span class="token-attr">.ux-row</span>             <span class="token-comment">/* 12-column grid container */</span>
+
+<span class="token-comment">/* Base Columns (mobile-first) */</span>
+<span class="token-attr">.ux-col-1</span> to <span class="token-attr">.ux-col-12</span>    <span class="token-comment">/* Default (all screens) */</span>
+
+<span class="token-comment">/* Responsive Breakpoints */</span>
+<span class="token-attr">.ux-col-md-1</span> to <span class="token-attr">.ux-col-md-12</span>  <span class="token-comment">/* Medium (768px+) */</span>
+<span class="token-attr">.ux-col-lg-1</span> to <span class="token-attr">.ux-col-lg-12</span>  <span class="token-comment">/* Large (1024px+) */</span>
+<span class="token-attr">.ux-col-xl-1</span> to <span class="token-attr">.ux-col-xl-12</span>  <span class="token-comment">/* XL (1280px+) */</span>
+
+<span class="token-comment">/* Breakpoint Values */</span>
+<span class="token-keyword">md:</span>  <span class="token-string">768px</span>   <span class="token-comment">/* Tablets */</span>
+<span class="token-keyword">lg:</span>  <span class="token-string">1024px</span>  <span class="token-comment">/* Desktop */</span>
+<span class="token-keyword">xl:</span>  <span class="token-string">1280px</span>  <span class="token-comment">/* Large desktop */</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Buttons Section -->
+        <section class="demo-section" id="buttons">
+            <h2>Buttons</h2>
+            <p class="ux-text-muted">Premium buttons with hover interactions.</p>
+            <div class="ux-flex ux-items-center ux-flex-wrap ux-gap-4 ux-mt-4">
+                <button class="ux-btn ux-btn-primary">Primary Button</button>
+                <button class="ux-btn"
+                    style="background-color: var(--ux-color-surface); border: 1px solid var(--ux-color-border);">Secondary</button>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header">
+                    <span class="code-example-label">HTML</span>
+                </div>
+                <pre><code><span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-btn ux-btn-primary"</span><span class="token-tag">&gt;</span>Primary<span class="token-tag">&lt;/button&gt;</span>
+<span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-btn"</span><span class="token-tag">&gt;</span>Secondary<span class="token-tag">&lt;/button&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Form Controls Section -->
+        <section class="demo-section" id="forms">
+            <h2>Form Controls</h2>
+            <p class="ux-text-muted">Fully custom checkboxes, radios, and switches.</p>
+            <div class="component-grid">
+                <div>
+                    <h4>Checkbox</h4>
+                    <label class="ux-control ux-mt-2">
+                        <input type="checkbox" checked>
+                        <span class="ux-checkbox">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </span>
+                        <span class="ux-control-label">Option checked</span>
+                    </label>
+                </div>
+                <div>
+                    <h4>Radio</h4>
+                    <label class="ux-control ux-mt-2">
+                        <input type="radio" name="demo-radio" checked>
+                        <span class="ux-radio"></span>
+                        <span class="ux-control-label">Choice A</span>
+                    </label>
+                </div>
+                <div>
+                    <h4>Switch</h4>
+                    <label class="ux-control ux-mt-2">
+                        <input type="checkbox" checked>
+                        <span class="ux-switch"></span>
+                        <span class="ux-control-label">Enabled</span>
+                    </label>
+                </div>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-comment">&lt;!-- Checkbox --&gt;</span>
+<span class="token-tag">&lt;label</span> <span class="token-attr">class</span>=<span class="token-string">"ux-control"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;input</span> <span class="token-attr">type</span>=<span class="token-string">"checkbox"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;span</span> <span class="token-attr">class</span>=<span class="token-string">"ux-checkbox"</span><span class="token-tag">&gt;</span><span class="token-tag">&lt;svg&gt;</span>...<span class="token-tag">&lt;/svg&gt;&lt;/span&gt;</span>
+  <span class="token-tag">&lt;span</span> <span class="token-attr">class</span>=<span class="token-string">"ux-control-label"</span><span class="token-tag">&gt;</span>Label<span class="token-tag">&lt;/span&gt;</span>
+<span class="token-tag">&lt;/label&gt;</span>
+
+<span class="token-comment">&lt;!-- Switch --&gt;</span>
+<span class="token-tag">&lt;label</span> <span class="token-attr">class</span>=<span class="token-string">"ux-control"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;input</span> <span class="token-attr">type</span>=<span class="token-string">"checkbox"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;span</span> <span class="token-attr">class</span>=<span class="token-string">"ux-switch"</span><span class="token-tag">&gt;&lt;/span&gt;</span>
+  <span class="token-tag">&lt;span</span> <span class="token-attr">class</span>=<span class="token-string">"ux-control-label"</span><span class="token-tag">&gt;</span>Label<span class="token-tag">&lt;/span&gt;</span>
+<span class="token-tag">&lt;/label&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Custom Select Section -->
+        <section class="demo-section" id="select">
+            <h2>Custom Select</h2>
+            <p class="ux-text-muted">Searchable select with static or AJAX data.</p>
+            <div class="component-grid">
+                <div>
+                    <label class="ux-label">Static Select</label>
+                    <div class="ux-select-container">
+                        <div class="ux-select-trigger" tabindex="0">
+                            <span>Select a country...</span>
+                            <svg class="ux-select-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="ux-select-dropdown">
+                            <div class="ux-select-search"><input type="text" placeholder="Search..."
+                                    aria-label="Search"></div>
+                            <div class="ux-select-options">
+                                <div class="ux-select-option" data-value="us">United States</div>
+                                <div class="ux-select-option" data-value="br">Brazil</div>
+                                <div class="ux-select-option" data-value="ca">Canada</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="ux-label">AJAX Select</label>
+                    <div class="ux-select-container" data-url="/api/users.json" data-value-field="id"
+                        data-label-field="name">
+                        <div class="ux-select-trigger" tabindex="0">
+                            <span>Select a user...</span>
+                            <svg class="ux-select-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="ux-select-dropdown">
+                            <div class="ux-select-search"><input type="text" placeholder="Search..."
+                                    aria-label="Search"></div>
+                            <div class="ux-select-options"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-comment">&lt;!-- Static Select --&gt;</span>
+<span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-select-container"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-select-trigger"</span><span class="token-tag">&gt;</span><span class="token-tag">&lt;span&gt;</span>Select...<span class="token-tag">&lt;/span&gt;&lt;/div&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-select-dropdown"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-select-options"</span><span class="token-tag">&gt;</span>
+      <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-select-option"</span> <span class="token-attr">data-value</span>=<span class="token-string">"1"</span><span class="token-tag">&gt;</span>Option<span class="token-tag">&lt;/div&gt;</span>
+    <span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-tag">&lt;/div&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span>
+
+<span class="token-comment">&lt;!-- AJAX Select --&gt;</span>
+<span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-select-container"</span>
+     <span class="token-attr">data-url</span>=<span class="token-string">"/api/data.json"</span>
+     <span class="token-attr">data-value-field</span>=<span class="token-string">"id"</span>
+     <span class="token-attr">data-label-field</span>=<span class="token-string">"name"</span><span class="token-tag">&gt;</span>
+  ...
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Modal Section -->
+        <section class="demo-section" id="modal">
+            <h2>Modal</h2>
+            <p class="ux-text-muted">Accessible modals with support for images and AJAX content.</p>
+            <div class="ux-flex ux-flex-wrap ux-gap-4 ux-mt-4">
+                <button class="ux-btn ux-btn-primary" data-ux-modal-target="demo-modal">Static Modal</button>
+                <button class="ux-btn" style="border: 1px solid var(--ux-color-border);"
+                    data-ux-modal-target="image-modal"
+                    data-ux-modal-image="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+                    data-ux-modal-title="Mountain Landscape">Image Lightbox</button>
+                <button class="ux-btn" style="border: 1px solid var(--ux-color-border);"
+                    onclick="UXModal.confirm('Are you sure?').then(r => UXToast.info(r ? 'Confirmed!' : 'Cancelled'))">Confirm
+                    Dialog</button>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML + JavaScript</span></div>
+                <pre><code><span class="token-comment">&lt;!-- Trigger --&gt;</span>
+<span class="token-tag">&lt;button</span> <span class="token-attr">data-ux-modal-target</span>=<span class="token-string">"my-modal"</span><span class="token-tag">&gt;</span>Open<span class="token-tag">&lt;/button&gt;</span>
+
+<span class="token-comment">&lt;!-- Image lightbox trigger --&gt;</span>
+<span class="token-tag">&lt;button</span> <span class="token-attr">data-ux-modal-target</span>=<span class="token-string">"img-modal"</span>
+        <span class="token-attr">data-ux-modal-image</span>=<span class="token-string">"path/to/image.jpg"</span><span class="token-tag">&gt;</span>View<span class="token-tag">&lt;/button&gt;</span>
+
+<span class="token-comment">// JavaScript API</span>
+<span class="token-function">UXModal</span>.<span class="token-function">open</span>(<span class="token-string">'modal-id'</span>);
+<span class="token-function">UXModal</span>.<span class="token-function">close</span>(<span class="token-string">'modal-id'</span>);
+<span class="token-function">UXModal</span>.<span class="token-function">confirm</span>(<span class="token-string">'Are you sure?'</span>).<span class="token-function">then</span>(<span class="token-attr">result</span> => { });
+<span class="token-function">UXModal</span>.<span class="token-function">create</span>({
+  <span class="token-attr">title</span>: <span class="token-string">'Title'</span>,
+  <span class="token-attr">content</span>: <span class="token-string">'&lt;p&gt;Content&lt;/p&gt;'</span>,
+  <span class="token-attr">onConfirm</span>: () => <span class="token-function">console</span>.<span class="token-function">log</span>(<span class="token-string">'Saved!'</span>)
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Accordion Section -->
+        <section class="demo-section" id="accordion">
+            <h2>Accordion</h2>
+            <p class="ux-text-muted">Collapsible content panels with smooth animations.</p>
+            <div class="ux-accordion ux-mt-4" style="max-width: 600px;">
+                <div class="ux-accordion-item is-open">
+                    <button class="ux-accordion-header">
+                        What is UXCore?
+                        <svg class="ux-accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="ux-accordion-content">
+                        <div class="ux-accordion-body">UXCore is a modern UI framework built with vanilla JavaScript and
+                            CSS.</div>
+                    </div>
+                </div>
+                <div class="ux-accordion-item">
+                    <button class="ux-accordion-header">
+                        How do I use it?
+                        <svg class="ux-accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="ux-accordion-content">
+                        <div class="ux-accordion-body">Include the CSS and JS files in your project.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-accordion"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-accordion-item is-open"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-accordion-header"</span><span class="token-tag">&gt;</span>Title<span class="token-tag">&lt;/button&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-accordion-content"</span><span class="token-tag">&gt;</span>
+      <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-accordion-body"</span><span class="token-tag">&gt;</span>Content<span class="token-tag">&lt;/div&gt;</span>
+    <span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-tag">&lt;/div&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Tabs Section -->
+        <section class="demo-section" id="tabs">
+            <h2>Tabs</h2>
+            <p class="ux-text-muted">Tab navigation with static or AJAX-loaded content panels.</p>
+
+            <!-- Static Tabs -->
+            <h4 class="ux-mt-6">Static Tabs</h4>
+            <div class="ux-tabs ux-mt-2" style="max-width: 600px;">
+                <div class="ux-tabs-list">
+                    <button class="ux-tab is-active">Overview</button>
+                    <button class="ux-tab">Features</button>
+                    <button class="ux-tab">Pricing</button>
+                </div>
+                <div class="ux-tabs-panels">
+                    <div class="ux-tab-panel is-active">
+                        <p>UXCore provides a complete set of UI components.</p>
+                    </div>
+                    <div class="ux-tab-panel">
+                        <p>Includes buttons, forms, modals, and more.</p>
+                    </div>
+                    <div class="ux-tab-panel">
+                        <p>Free and open source.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AJAX Tabs -->
+            <h4 class="ux-mt-8">AJAX Tabs (Dynamic Loading)</h4>
+            <div class="ux-tabs ux-mt-2" style="max-width: 600px;">
+                <div class="ux-tabs-list">
+                    <button class="ux-tab is-active" data-url="/api/tab1.json">Tab 1</button>
+                    <button class="ux-tab" data-url="/api/tab2.json">Tab 2</button>
+                    <button class="ux-tab" data-url="/api/tab3.json" data-cache="false">Tab 3 (No Cache)</button>
+                </div>
+                <div class="ux-tabs-panels">
+                    <div class="ux-tab-panel is-active"></div>
+                    <div class="ux-tab-panel"></div>
+                    <div class="ux-tab-panel"></div>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML - Static</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tabs"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tabs-list"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tab is-active"</span><span class="token-tag">&gt;</span>Tab 1<span class="token-tag">&lt;/button&gt;</span>
+    <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tab"</span><span class="token-tag">&gt;</span>Tab 2<span class="token-tag">&lt;/button&gt;</span>
+  <span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tabs-panels"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tab-panel is-active"</span><span class="token-tag">&gt;</span>Content 1<span class="token-tag">&lt;/div&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tab-panel"</span><span class="token-tag">&gt;</span>Content 2<span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-tag">&lt;/div&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+
+            <div class="code-example ux-mt-4">
+                <div class="code-example-header"><span class="code-example-label">HTML - AJAX</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tabs"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tabs-list"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tab is-active"</span> <span class="token-attr">data-url</span>=<span class="token-string">"/api/tab1.json"</span><span class="token-tag">&gt;</span>Tab 1<span class="token-tag">&lt;/button&gt;</span>
+    <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tab"</span> <span class="token-attr">data-url</span>=<span class="token-string">"/api/tab2.json"</span><span class="token-tag">&gt;</span>Tab 2<span class="token-tag">&lt;/button&gt;</span>
+    <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tab"</span> <span class="token-attr">data-url</span>=<span class="token-string">"/api/tab3.json"</span> <span class="token-attr">data-cache</span>=<span class="token-string">"false"</span><span class="token-tag">&gt;</span>No Cache<span class="token-tag">&lt;/button&gt;</span>
+  <span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tabs-panels"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tab-panel is-active"</span><span class="token-tag">&gt;&lt;/div&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tab-panel"</span><span class="token-tag">&gt;&lt;/div&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tab-panel"</span><span class="token-tag">&gt;&lt;/div&gt;</span>
+  <span class="token-tag">&lt;/div&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+
+            <div class="code-example ux-mt-4">
+                <div class="code-example-header"><span class="code-example-label">Data Attributes & API</span></div>
+                <pre><code><span class="token-comment">/* Data Attributes (on .ux-tab) */</span>
+<span class="token-attr">data-url</span>=<span class="token-string">"..."</span>         <span class="token-comment">/* URL to fetch content from */</span>
+<span class="token-attr">data-cache</span>=<span class="token-string">"false"</span>    <span class="token-comment">/* Disable caching, refetch on click */</span>
+
+<span class="token-comment">/* Events */</span>
+<span class="token-attr">ux-tabs:change</span>   <span class="token-comment">/* Fired when tab changes { index, tab, panel } */</span>
+<span class="token-attr">ux-tabs:loaded</span>   <span class="token-comment">/* Fired when AJAX content loads { index, content } */</span>
+<span class="token-attr">ux-tabs:error</span>    <span class="token-comment">/* Fired on AJAX error { index, error } */</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Dropdown Section -->
+        <section class="demo-section" id="dropdown">
+            <h2>Dropdown</h2>
+            <p class="ux-text-muted">Generic dropdown menus.</p>
+            <div class="ux-dropdown ux-mt-4">
+                <button class="ux-btn ux-btn-primary ux-dropdown-trigger">
+                    Actions
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="ux-dropdown-menu">
+                    <button class="ux-dropdown-item">Edit</button>
+                    <button class="ux-dropdown-item">Duplicate</button>
+                    <div class="ux-dropdown-divider"></div>
+                    <button class="ux-dropdown-item" style="color: var(--ux-color-error);">Delete</button>
+                </div>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-dropdown"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-btn ux-dropdown-trigger"</span><span class="token-tag">&gt;</span>Menu<span class="token-tag">&lt;/button&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-dropdown-menu"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-dropdown-item"</span><span class="token-tag">&gt;</span>Item 1<span class="token-tag">&lt;/button&gt;</span>
+    <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-dropdown-item"</span><span class="token-tag">&gt;</span>Item 2<span class="token-tag">&lt;/button&gt;</span>
+  <span class="token-tag">&lt;/div&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Alerts Section -->
+        <section class="demo-section" id="alerts">
+            <h2>Alerts</h2>
+            <p class="ux-text-muted">Contextual feedback messages for user actions.</p>
+
+            <div class="ux-flex ux-flex-col ux-gap-4 ux-mt-4" style="max-width: 700px;">
+                <!-- Info Alert -->
+                <div class="ux-alert ux-alert-info">
+                    <svg class="ux-alert-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div class="ux-alert-content">
+                        <strong class="ux-alert-title">Information</strong>
+                        This is an informational alert using <code>ux-alert-info</code>.
+                    </div>
+                </div>
+
+                <!-- Success Alert -->
+                <div class="ux-alert ux-alert-success">
+                    <svg class="ux-alert-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <div class="ux-alert-content">
+                        <strong class="ux-alert-title">Success</strong>
+                        Your changes have been saved using <code>ux-alert-success</code>.
+                    </div>
+                </div>
+
+                <!-- Warning Alert -->
+                <div class="ux-alert ux-alert-warning">
+                    <svg class="ux-alert-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    <div class="ux-alert-content">
+                        <strong class="ux-alert-title">Warning</strong>
+                        Please review your input using <code>ux-alert-warning</code>.
+                    </div>
+                </div>
+
+                <!-- Error Alert -->
+                <div class="ux-alert ux-alert-error">
+                    <svg class="ux-alert-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <div class="ux-alert-content">
+                        <strong class="ux-alert-title">Error</strong>
+                        Something went wrong using <code>ux-alert-error</code>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-alert ux-alert-info"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;svg</span> <span class="token-attr">class</span>=<span class="token-string">"ux-alert-icon"</span><span class="token-tag">&gt;</span>...<span class="token-tag">&lt;/svg&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-alert-content"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;strong</span> <span class="token-attr">class</span>=<span class="token-string">"ux-alert-title"</span><span class="token-tag">&gt;</span>Title<span class="token-tag">&lt;/strong&gt;</span>
+    Message text here
+  <span class="token-tag">&lt;/div&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+
+            <div class="code-example ux-mt-4">
+                <div class="code-example-header"><span class="code-example-label">CSS Classes Reference</span></div>
+                <pre><code><span class="token-comment">/* Base Classes */</span>
+<span class="token-attr">.ux-alert</span>          <span class="token-comment">/* Container - required */</span>
+<span class="token-attr">.ux-alert-icon</span>     <span class="token-comment">/* Icon wrapper */</span>
+<span class="token-attr">.ux-alert-content</span>  <span class="token-comment">/* Content wrapper */</span>
+<span class="token-attr">.ux-alert-title</span>    <span class="token-comment">/* Bold title text */</span>
+
+<span class="token-comment">/* Variant Classes (add to .ux-alert) */</span>
+<span class="token-attr">.ux-alert-info</span>     <span class="token-comment">/* Blue - informational */</span>
+<span class="token-attr">.ux-alert-success</span>  <span class="token-comment">/* Green - success action */</span>
+<span class="token-attr">.ux-alert-warning</span>  <span class="token-comment">/* Yellow - warning/caution */</span>
+<span class="token-attr">.ux-alert-error</span>    <span class="token-comment">/* Red - error/danger */</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Toast Section -->
+        <section class="demo-section" id="toasts">
+            <h2>Toast Notifications</h2>
+            <p class="ux-text-muted">Non-blocking notifications via JavaScript.</p>
+            <div class="ux-flex ux-gap-2 ux-mt-4">
+                <button class="ux-btn ux-btn-primary" onclick="UXToast.success('Operation completed!')">Success</button>
+                <button class="ux-btn" style="border: 1px solid var(--ux-color-border);"
+                    onclick="UXToast.error('An error occurred.')">Error</button>
+                <button class="ux-btn" style="border: 1px solid var(--ux-color-border);"
+                    onclick="UXToast.info('New update available.')">Info</button>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">JavaScript</span></div>
+                <pre><code><span class="token-function">UXToast</span>.<span class="token-function">success</span>(<span class="token-string">'Operation completed!'</span>);
+<span class="token-function">UXToast</span>.<span class="token-function">error</span>(<span class="token-string">'An error occurred.'</span>);
+<span class="token-function">UXToast</span>.<span class="token-function">info</span>(<span class="token-string">'Information message'</span>);
+<span class="token-function">UXToast</span>.<span class="token-function">warning</span>(<span class="token-string">'Warning message'</span>);
+
+<span class="token-comment">// With options</span>
+<span class="token-function">UXToast</span>.<span class="token-function">show</span>(<span class="token-string">'Message'</span>, { <span class="token-attr">type</span>: <span class="token-string">'success'</span>, <span class="token-attr">duration</span>: <span class="token-string">5000</span> });</code></pre>
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section class="demo-section" id="cards" style="border: none;">
+            <h2>Cards</h2>
+            <p class="ux-text-muted">Versatile card components.</p>
+            <div class="component-grid">
+                <div class="ux-card">
+                    <div class="ux-card-header">
+                        <h3 class="ux-card-title">Card Title</h3>
+                        <p class="ux-card-subtitle">Subtitle</p>
+                    </div>
+                    <div class="ux-card-body">
+                        <p>Card content goes here.</p>
+                    </div>
+                    <div class="ux-card-footer">
+                        <button class="ux-btn">Cancel</button>
+                        <button class="ux-btn ux-btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-card"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-card-header"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;h3</span> <span class="token-attr">class</span>=<span class="token-string">"ux-card-title"</span><span class="token-tag">&gt;</span>Title<span class="token-tag">&lt;/h3&gt;</span>
+  <span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-card-body"</span><span class="token-tag">&gt;</span>Content<span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-card-footer"</span><span class="token-tag">&gt;</span>Footer<span class="token-tag">&lt;/div&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Static Modal -->
+    <div id="demo-modal" class="ux-modal-overlay">
+        <div class="ux-modal" role="dialog" aria-modal="true">
+            <div class="ux-modal-header">
+                <h3 class="ux-modal-title">Welcome to UXCore</h3>
+                <button class="ux-modal-close" data-ux-modal-close aria-label="Close">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="ux-modal-body">
+                <p>This is a static modal with backdrop blur.</p>
+            </div>
+            <div class="ux-modal-footer">
+                <button class="ux-btn" data-ux-modal-close>Cancel</button>
+                <button class="ux-btn ux-btn-primary" data-ux-modal-close>Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="ux-modal-overlay">
+        <div class="ux-modal ux-modal-image" role="dialog" aria-modal="true">
+            <button class="ux-modal-close" data-ux-modal-close aria-label="Close">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="ux-modal-body"></div>
+        </div>
+    </div>
+
+    <footer class="ux-p-6 ux-text-center"
+        style="background-color: var(--ux-color-surface); border-top: 1px solid var(--ux-color-border);">
+        <p class="ux-m-0 ux-text-sm ux-text-muted">Built with UXCore. Pure HTML/CSS/JS.</p>
+    </footer>
+
+    <!-- JS -->
+    <script type="module" src="dist/uxcore.min.js"></script>
+    <script>
+        // Smooth scroll without polluting URL with hash
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').slice(1);
+                if (!targetId) return;
+
+                const target = document.getElementById(targetId);
+                if (target) {
+                    const navbar = document.querySelector('.ux-navbar');
+                    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 20;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

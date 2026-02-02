@@ -6,8 +6,8 @@ A modern, minimalist UI framework built with JavaScript and CSS.
 
 | File | Description |
 |------|-------------|
-| `uxcore.min.css` | Minified CSS (production) |
-| `uxcore.min.js` | Minified JavaScript (production) |
+| `uxcore.min.css` | Minified CSS |
+| `uxcore.min.js` | Minified JavaScript |
 
 ## 🚀 Quick Start
 
