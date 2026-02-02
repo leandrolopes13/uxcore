@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
-    <title>UXCore - Modern UI Framework | JavaScript & CSS Components</title>
+    <title>UXCore - Modern UI Framework | JavaScript & CSS Components | Local</title>
     <meta name="title" content="UXCore - Modern UI Framework | JavaScript & CSS Components">
     <meta name="description"
         content="UXCore is a lightweight, modern UI framework built with vanilla JavaScript and CSS. Includes buttons, modals, tabs, accordions, toasts, cards, and more. Zero dependencies, easy to customize.">
@@ -101,6 +101,17 @@
             margin-top: var(--ux-space-6);
         }
 
+        .demo-carousel-bg {
+            height: 200px;
+            background: linear-gradient(135deg, var(--ux-color-primary) 0%, var(--ux-color-info) 100%);
+            border-radius: var(--ux-radius-md);
+        }
+
+        .demo-carousel-content {
+            color: white;
+            font-size: 1.5rem;
+        }
+
         .demo-box {
             padding: var(--ux-space-4);
             background: var(--ux-color-primary-fade);
@@ -108,6 +119,31 @@
             text-align: center;
             font-size: var(--ux-text-sm);
             color: var(--ux-color-primary);
+        }
+
+        .demo-hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .demo-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--ux-space-4);
+        }
+
+        .demo-hero p {
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .demo-max-w-400 {
+            max-width: 400px;
+        }
+
+        .demo-max-w-600 {
+            max-width: 600px;
         }
 
         /* Code block styles */
@@ -211,9 +247,9 @@
     <main class="ux-container">
 
         <!-- Hero Section with H1 -->
-        <section class="demo-section" style="text-align: center; padding: var(--ux-space-16) 0;">
-            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: var(--ux-space-4);">UXCore UI Framework</h1>
-            <p class="ux-text-muted" style="font-size: 1.125rem; max-width: 600px; margin: 0 auto;">A modern,
+        <section class="demo-section demo-hero">
+            <h1>UXCore UI Framework</h1>
+            <p class="ux-text-muted">A modern,
                 lightweight UI framework built with vanilla JavaScript and CSS. Zero dependencies, easy to customize.
             </p>
         </section>
@@ -289,8 +325,7 @@
             <p class="ux-text-muted">Premium buttons with hover interactions.</p>
             <div class="ux-flex ux-items-center ux-flex-wrap ux-gap-4 ux-mt-4">
                 <button class="ux-btn ux-btn-primary">Primary Button</button>
-                <button class="ux-btn"
-                    style="background-color: var(--ux-color-surface); border: 1px solid var(--ux-color-border);">Secondary</button>
+                <button class="ux-btn ux-btn-outline">Secondary</button>
             </div>
             <div class="code-example">
                 <div class="code-example-header">
@@ -426,11 +461,10 @@
             <p class="ux-text-muted">Accessible modals with support for images and AJAX content.</p>
             <div class="ux-flex ux-flex-wrap ux-gap-4 ux-mt-4">
                 <button class="ux-btn ux-btn-primary" data-ux-modal-target="demo-modal">Static Modal</button>
-                <button class="ux-btn" style="border: 1px solid var(--ux-color-border);"
-                    data-ux-modal-target="image-modal"
+                <button class="ux-btn ux-btn-outline" data-ux-modal-target="image-modal"
                     data-ux-modal-image="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
                     data-ux-modal-title="Mountain Landscape">Image Lightbox</button>
-                <button class="ux-btn" style="border: 1px solid var(--ux-color-border);"
+                <button class="ux-btn ux-btn-outline"
                     onclick="UXModal.confirm('Are you sure?').then(r => UXToast.info(r ? 'Confirmed!' : 'Cancelled'))">Confirm
                     Dialog</button>
             </div>
@@ -459,7 +493,7 @@
         <section class="demo-section" id="accordion">
             <h2>Accordion</h2>
             <p class="ux-text-muted">Collapsible content panels with smooth animations.</p>
-            <div class="ux-accordion ux-mt-4" style="max-width: 600px;">
+            <div class="ux-accordion ux-mt-4 demo-max-w-600">
                 <div class="ux-accordion-item is-open">
                     <button class="ux-accordion-header">
                         What is UXCore?
@@ -504,7 +538,7 @@
 
             <!-- Static Tabs -->
             <h4 class="ux-mt-6">Static Tabs</h4>
-            <div class="ux-tabs ux-mt-2" style="max-width: 600px;">
+            <div class="ux-tabs ux-mt-2 demo-max-w-600">
                 <div class="ux-tabs-list">
                     <button class="ux-tab is-active">Overview</button>
                     <button class="ux-tab">Features</button>
@@ -525,7 +559,7 @@
 
             <!-- AJAX Tabs -->
             <h4 class="ux-mt-8">AJAX Tabs (Dynamic Loading)</h4>
-            <div class="ux-tabs ux-mt-2" style="max-width: 600px;">
+            <div class="ux-tabs ux-mt-2 demo-max-w-600">
                 <div class="ux-tabs-list">
                     <button class="ux-tab is-active" data-url="/api/tab1.json">Tab 1</button>
                     <button class="ux-tab" data-url="/api/tab2.json">Tab 2</button>
@@ -746,6 +780,645 @@
             </div>
         </section>
 
+        <!-- Tooltip Section -->
+        <section class="demo-section" id="tooltip">
+            <h2>Tooltip</h2>
+            <p class="ux-text-muted">Contextual hints on hover using pure CSS.</p>
+
+            <div class="demo-box ux-flex ux-gap-4 ux-flex-wrap ux-justify-center">
+                <span class="ux-tooltip" data-tooltip="Top tooltip (default)">Hover me</span>
+                <span class="ux-tooltip ux-tooltip-bottom" data-tooltip="Bottom tooltip">Bottom</span>
+                <span class="ux-tooltip ux-tooltip-left" data-tooltip="Left tooltip">Left</span>
+                <span class="ux-tooltip ux-tooltip-right" data-tooltip="Right tooltip">Right</span>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;span</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tooltip"</span> <span class="token-attr">data-tooltip</span>=<span class="token-string">"Message"</span><span class="token-tag">&gt;</span>Hover me<span class="token-tag">&lt;/span&gt;</span>
+<span class="token-tag">&lt;span</span> <span class="token-attr">class</span>=<span class="token-string">"ux-tooltip ux-tooltip-bottom"</span> <span class="token-attr">data-tooltip</span>=<span class="token-string">"Bottom"</span><span class="token-tag">&gt;</span>Bottom<span class="token-tag">&lt;/span&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Badge Section -->
+        <section class="demo-section" id="badge">
+            <h2>Badge</h2>
+            <p class="ux-text-muted">Labels, counters and status indicators.</p>
+
+            <div class="demo-box ux-flex ux-gap-2 ux-flex-wrap ux-items-center">
+                <span class="ux-badge">Default</span>
+                <span class="ux-badge ux-badge-success">Success</span>
+                <span class="ux-badge ux-badge-warning">Warning</span>
+                <span class="ux-badge ux-badge-error">Error</span>
+                <span class="ux-badge ux-badge-info">Info</span>
+                <span class="ux-badge ux-badge-outline">Outline</span>
+                <span class="ux-badge ux-badge-dot"></span>
+                <span class="ux-badge ux-badge-dot ux-badge-success"></span>
+            </div>
+
+            <div class="demo-box ux-mt-4 ux-flex ux-gap-4 ux-items-center">
+                <div class="ux-badge-container">
+                    <span class="ux-badge">Messages</span>
+                    <span class="ux-badge ux-badge-error">5</span>
+                </div>
+                <div class="ux-badge-container">
+                    <span class="ux-badge ux-badge-primary">Updates</span>
+                    <span class="ux-badge ux-badge-warning ux-badge-dot"></span>
+                </div>
+                <div class="ux-badge-container">
+                    <button class="ux-badge ux-badge-outline">Alerts</button>
+                    <span class="ux-badge ux-badge-success">New</span>
+                </div>
+            </div>
+
+            <div class="demo-box ux-mt-4">
+                <div class="ux-badge-container">
+                    <button class="ux-btn">Notifications</button>
+                    <span class="ux-badge ux-badge-error">5</span>
+                </div>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;span</span> <span class="token-attr">class</span>=<span class="token-string">"ux-badge ux-badge-success"</span><span class="token-tag">&gt;</span>Success<span class="token-tag">&lt;/span&gt;</span>
+<span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-badge-container"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-btn"</span><span class="token-tag">&gt;</span>Notifications<span class="token-tag">&lt;/button&gt;</span>
+  <span class="token-tag">&lt;span</span> <span class="token-attr">class</span>=<span class="token-string">"ux-badge ux-badge-error"</span><span class="token-tag">&gt;</span>5<span class="token-tag">&lt;/span&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Input Group Section -->
+        <section class="demo-section" id="input-group">
+            <h2>Input Groups</h2>
+            <p class="ux-text-muted">Inputs with icons, prefixes and suffixes.</p>
+
+            <div class="demo-box ux-flex ux-flex-col ux-gap-4 demo-max-w-400">
+                <div class="ux-input-group">
+                    <span class="ux-input-addon">@</span>
+                    <input type="text" class="ux-input" placeholder="username">
+                </div>
+
+                <div class="ux-input-group">
+                    <span class="ux-input-addon">R$</span>
+                    <input type="text" class="ux-input" placeholder="0.00">
+                    <span class="ux-input-addon">.00</span>
+                </div>
+
+                <div class="ux-input-group">
+                    <input type="text" class="ux-input" placeholder="Search...">
+                    <button class="ux-btn ux-btn-primary">Search</button>
+                </div>
+
+                <div class="ux-input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                    </svg>
+                    <input type="email" class="ux-input" placeholder="Email address">
+                </div>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-input-group"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;span</span> <span class="token-attr">class</span>=<span class="token-string">"ux-input-addon"</span><span class="token-tag">&gt;</span>@<span class="token-tag">&lt;/span&gt;</span>
+  <span class="token-tag">&lt;input</span> <span class="token-attr">type</span>=<span class="token-string">"text"</span> <span class="token-attr">class</span>=<span class="token-string">"ux-input"</span><span class="token-tag">&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Skeleton Section -->
+        <section class="demo-section" id="skeleton">
+            <h2>Skeleton Loader</h2>
+            <p class="ux-text-muted">Animated placeholders while content loads.</p>
+
+            <div class="ux-row">
+                <div class="ux-col-12 ux-col-md-6">
+                    <div class="ux-skeleton-card">
+                        <div class="ux-skeleton ux-skeleton-image"></div>
+                        <div class="ux-skeleton ux-skeleton-heading"></div>
+                        <div class="ux-skeleton ux-skeleton-text"></div>
+                        <div class="ux-skeleton ux-skeleton-text"></div>
+                        <div class="ux-skeleton ux-skeleton-text" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="ux-col-12 ux-col-md-6">
+                    <div class="ux-skeleton-inline ux-mb-4">
+                        <div class="ux-skeleton ux-skeleton-avatar"></div>
+                        <div style="flex: 1;">
+                            <div class="ux-skeleton ux-skeleton-text" style="width: 40%;"></div>
+                            <div class="ux-skeleton ux-skeleton-text" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="ux-skeleton-inline ux-mb-4">
+                        <div class="ux-skeleton ux-skeleton-avatar"></div>
+                        <div style="flex: 1;">
+                            <div class="ux-skeleton ux-skeleton-text" style="width: 50%;"></div>
+                            <div class="ux-skeleton ux-skeleton-text" style="width: 45%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-skeleton ux-skeleton-text"</span><span class="token-tag">&gt;&lt;/div&gt;</span>
+<span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-skeleton ux-skeleton-avatar"</span><span class="token-tag">&gt;&lt;/div&gt;</span>
+<span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-skeleton ux-skeleton-image"</span><span class="token-tag">&gt;&lt;/div&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section class="demo-section" id="progress">
+            <h2>Progress Bar</h2>
+            <p class="ux-text-muted">Visual progress indicators with animations.</p>
+
+            <div class="demo-box ux-flex ux-flex-col ux-gap-4">
+                <div class="ux-progress">
+                    <div class="ux-progress-bar" style="width: 25%;"></div>
+                </div>
+                <div class="ux-progress ux-progress-success">
+                    <div class="ux-progress-bar" style="width: 50%;"></div>
+                </div>
+                <div class="ux-progress ux-progress-warning ux-progress-striped">
+                    <div class="ux-progress-bar" style="width: 75%;"></div>
+                </div>
+                <div class="ux-progress ux-progress-error ux-progress-striped ux-progress-animated">
+                    <div class="ux-progress-bar" style="width: 90%;"></div>
+                </div>
+                <div class="ux-progress ux-progress-lg ux-progress-labeled">
+                    <div class="ux-progress-bar" style="width: 65%;">65%</div>
+                </div>
+                <div class="ux-progress ux-progress-indeterminate">
+                    <div class="ux-progress-bar"></div>
+                </div>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-progress"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-progress-bar"</span> <span class="token-attr">style</span>=<span class="token-string">"width: 50%;"</span><span class="token-tag">&gt;&lt;/div&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Pagination Section -->
+        <section class="demo-section" id="pagination">
+            <h2>Pagination</h2>
+            <p class="ux-text-muted">Navigate between pages of content.</p>
+
+            <div class="demo-box">
+                <ul class="ux-pagination">
+                    <li class="ux-pagination-item">
+                        <a href="#" class="ux-pagination-link">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="ux-pagination-item"><a href="#" class="ux-pagination-link">1</a></li>
+                    <li class="ux-pagination-item"><a href="#" class="ux-pagination-link is-active">2</a></li>
+                    <li class="ux-pagination-item"><a href="#" class="ux-pagination-link">3</a></li>
+                    <li class="ux-pagination-item"><span class="ux-pagination-ellipsis">...</span></li>
+                    <li class="ux-pagination-item"><a href="#" class="ux-pagination-link">10</a></li>
+                    <li class="ux-pagination-item">
+                        <a href="#" class="ux-pagination-link">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Breadcrumb Section -->
+        <section class="demo-section" id="breadcrumb">
+            <h2>Breadcrumb</h2>
+            <p class="ux-text-muted">Hierarchical navigation path.</p>
+
+            <div class="demo-box ux-flex ux-flex-col ux-gap-4">
+                <ul class="ux-breadcrumb">
+                    <li class="ux-breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="ux-breadcrumb-item"><a href="#">Products</a></li>
+                    <li class="ux-breadcrumb-item"><a href="#">Category</a></li>
+                    <li class="ux-breadcrumb-item">Current Page</li>
+                </ul>
+
+                <ul class="ux-breadcrumb ux-breadcrumb-arrow">
+                    <li class="ux-breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="ux-breadcrumb-item"><a href="#">Products</a></li>
+                    <li class="ux-breadcrumb-item">Current</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Avatar Section -->
+        <section class="demo-section" id="avatar">
+            <h2>Avatar</h2>
+            <p class="ux-text-muted">User profile images with fallback to initials.</p>
+
+            <div class="demo-box ux-flex ux-gap-4 ux-flex-wrap ux-items-center">
+                <span class="ux-avatar ux-avatar-xs">XS</span>
+                <span class="ux-avatar ux-avatar-sm">SM</span>
+                <span class="ux-avatar">MD</span>
+                <span class="ux-avatar ux-avatar-lg">LG</span>
+                <span class="ux-avatar ux-avatar-xl">XL</span>
+                <span class="ux-avatar ux-avatar-success">OK</span>
+                <span class="ux-avatar ux-avatar-error">!</span>
+                <span class="ux-avatar ux-avatar-square">SQ</span>
+            </div>
+
+            <div class="demo-box ux-mt-4">
+                <div class="ux-avatar-group">
+                    <span class="ux-avatar ux-avatar-primary">JD</span>
+                    <span class="ux-avatar ux-avatar-secondary">MR</span>
+                    <span class="ux-avatar ux-avatar-info">AS</span>
+                    <span class="ux-avatar ux-avatar-count">+5</span>
+                </div>
+            </div>
+
+            <div class="demo-box ux-mt-4 ux-flex ux-gap-4">
+                <div class="ux-avatar-wrapper">
+                    <span class="ux-avatar">AB</span>
+                    <span class="ux-avatar-status ux-avatar-status-online"></span>
+                </div>
+                <div class="ux-avatar-wrapper">
+                    <span class="ux-avatar">CD</span>
+                    <span class="ux-avatar-status ux-avatar-status-busy"></span>
+                </div>
+                <div class="ux-avatar-wrapper">
+                    <span class="ux-avatar">EF</span>
+                    <span class="ux-avatar-status ux-avatar-status-away"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chip/Tag Section -->
+        <section class="demo-section" id="chip">
+            <h2>Chip / Tag</h2>
+            <p class="ux-text-muted">Removable labels for filters and categories.</p>
+
+            <div class="demo-box ux-chip-group">
+                <span class="ux-chip">Default</span>
+                <span class="ux-chip ux-chip-primary">Primary</span>
+                <span class="ux-chip ux-chip-success">Success</span>
+                <span class="ux-chip ux-chip-warning">Warning</span>
+                <span class="ux-chip ux-chip-error">Error</span>
+                <span class="ux-chip ux-chip-info">Info</span>
+            </div>
+
+            <div class="demo-box ux-chip-group ux-mt-4">
+                <span class="ux-chip ux-chip-solid">Solid</span>
+                <span class="ux-chip ux-chip-solid ux-chip-success">Solid Success</span>
+                <span class="ux-chip">
+                    Removable
+                    <button class="ux-chip-remove">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </span>
+            </div>
+        </section>
+
+        <!-- Stepper Section -->
+        <section class="demo-section" id="stepper">
+            <h2>Stepper</h2>
+            <p class="ux-text-muted">Wizard-style step indicators for multi-step forms.</p>
+
+            <div class="demo-box">
+                <div class="ux-stepper">
+                    <div class="ux-stepper-item is-completed">
+                        <div class="ux-stepper-indicator">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <div class="ux-stepper-content">
+                            <h3 class="ux-stepper-title">Account</h3>
+                            <p class="ux-stepper-description">Create your account</p>
+                        </div>
+                    </div>
+                    <div class="ux-stepper-item is-active">
+                        <div class="ux-stepper-indicator">2</div>
+                        <div class="ux-stepper-content">
+                            <h3 class="ux-stepper-title">Profile</h3>
+                            <p class="ux-stepper-description">Setup your profile</p>
+                        </div>
+                    </div>
+                    <div class="ux-stepper-item">
+                        <div class="ux-stepper-indicator">3</div>
+                        <div class="ux-stepper-content">
+                            <h3 class="ux-stepper-title">Complete</h3>
+                            <p class="ux-stepper-description">Finish setup</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="demo-section" id="timeline">
+            <h2>Timeline</h2>
+            <p class="ux-text-muted">Display events in chronological order.</p>
+
+            <div class="demo-box">
+                <div class="ux-timeline">
+                    <div class="ux-timeline-item is-success">
+                        <div class="ux-timeline-dot"></div>
+                        <div class="ux-timeline-content">
+                            <div class="ux-timeline-header">
+                                <h3 class="ux-timeline-title">Order Delivered</h3>
+                                <span class="ux-timeline-time">Today, 2:30 PM</span>
+                            </div>
+                            <p class="ux-timeline-body">Your package has been delivered successfully.</p>
+                        </div>
+                    </div>
+                    <div class="ux-timeline-item is-info">
+                        <div class="ux-timeline-dot"></div>
+                        <div class="ux-timeline-content">
+                            <div class="ux-timeline-header">
+                                <h3 class="ux-timeline-title">Out for Delivery</h3>
+                                <span class="ux-timeline-time">Today, 9:00 AM</span>
+                            </div>
+                            <p class="ux-timeline-body">Package is on its way.</p>
+                        </div>
+                    </div>
+                    <div class="ux-timeline-item">
+                        <div class="ux-timeline-dot"></div>
+                        <div class="ux-timeline-content">
+                            <div class="ux-timeline-header">
+                                <h3 class="ux-timeline-title">Order Shipped</h3>
+                                <span class="ux-timeline-time">Yesterday</span>
+                            </div>
+                            <p class="ux-timeline-body">Your order has been shipped.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Table Section -->
+        <section class="demo-section" id="table">
+            <h2>Data Table</h2>
+            <p class="ux-text-muted">Styled tables with hover, striped and bordered variants.</p>
+
+            <div class="demo-box ux-table-responsive">
+                <table class="ux-table ux-table-hover ux-table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>john@example.com</td>
+                            <td>Admin</td>
+                            <td><span class="ux-badge ux-badge-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>jane@example.com</td>
+                            <td>User</td>
+                            <td><span class="ux-badge ux-badge-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Bob Wilson</td>
+                            <td>bob@example.com</td>
+                            <td>User</td>
+                            <td><span class="ux-badge ux-badge-warning">Pending</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Rating Section -->
+        <section class="demo-section" id="rating">
+            <h2>Rating</h2>
+            <p class="ux-text-muted">Star rating component for reviews and feedback.</p>
+
+            <div class="demo-box ux-flex ux-flex-col ux-gap-4">
+                <div class="ux-rating" data-value="3">
+                    <span class="ux-rating-item is-active"><svg fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg></span>
+                    <span class="ux-rating-item is-active"><svg fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg></span>
+                    <span class="ux-rating-item is-active"><svg fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg></span>
+                    <span class="ux-rating-item"><svg fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg></span>
+                    <span class="ux-rating-item"><svg fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg></span>
+                </div>
+
+                <div class="ux-rating-wrapper">
+                    <span class="ux-rating-value">4.5</span>
+                    <div class="ux-rating is-readonly" data-value="4.5">
+                        <span class="ux-rating-item is-active"><svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg></span>
+                        <span class="ux-rating-item is-active"><svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg></span>
+                        <span class="ux-rating-item is-active"><svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg></span>
+                        <span class="ux-rating-item is-active"><svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg></span>
+                        <span class="ux-rating-item is-half"><svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg></span>
+                    </div>
+                    <span class="ux-rating-count">(128 reviews)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Range Slider Section -->
+        <section class="demo-section" id="range">
+            <h2>Range Slider</h2>
+            <p class="ux-text-muted">Custom styled range input.</p>
+
+            <div class="demo-box ux-flex ux-flex-col ux-gap-8 demo-max-w-400">
+                <div class="ux-range-wrapper">
+                    <div class="ux-range-header">
+                        <span class="ux-range-label">Volume</span>
+                        <span class="ux-range-value">100%</span>
+                    </div>
+                    <input type="range" class="ux-range" value="50">
+                </div>
+
+                <div class="ux-range-wrapper">
+                    <div class="ux-range-header">
+                        <span class="ux-range-label">Price Range</span>
+                    </div>
+                    <input type="range" class="ux-range ux-range-success" min="0" max="1000" step="10" value="750">
+                    <div class="ux-range-limits">
+                        <span>$0</span>
+                        <span>$1000</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- File Upload Section -->
+        <section class="demo-section" id="file-upload">
+            <h2>File Upload</h2>
+            <p class="ux-text-muted">Drag & drop file upload with preview.</p>
+
+            <div class="demo-box">
+                <div class="ux-file-upload">
+                    <div class="ux-file-dropzone">
+                        <svg class="ux-file-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <p class="ux-file-text"><span>Click to upload</span> or drag and drop</p>
+                        <p class="ux-file-hint">PNG, JPG, GIF up to 10MB</p>
+                        <input type="file" class="ux-file-input" multiple accept="image/*">
+                    </div>
+                    <div class="ux-file-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carousel Section -->
+        <section class="demo-section" id="carousel">
+            <h2>Carousel</h2>
+            <p class="ux-text-muted">Image slider with navigation and indicators.</p>
+
+            <div class="demo-box">
+                <div class="ux-carousel demo-carousel-bg">
+                    <div class="ux-carousel-track">
+                        <div class="ux-carousel-slide demo-carousel-content ux-flex ux-items-center ux-justify-center">
+                            Slide 1</div>
+                        <div class="ux-carousel-slide demo-carousel-content ux-flex ux-items-center ux-justify-center">
+                            Slide 2</div>
+                        <div class="ux-carousel-slide demo-carousel-content ux-flex ux-items-center ux-justify-center">
+                            Slide 3</div>
+                    </div>
+                    <button class="ux-carousel-prev">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button class="ux-carousel-next">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                    <div class="ux-carousel-indicators">
+                        <button class="ux-carousel-indicator is-active"></button>
+                        <button class="ux-carousel-indicator"></button>
+                        <button class="ux-carousel-indicator"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-carousel"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-carousel-track"</span><span class="token-tag">&gt;</span>
+        <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-carousel-slide"</span><span class="token-tag">&gt;</span>...<span class="token-tag">&lt;/div&gt;</span>
+    <span class="token-tag">&lt;/div&gt;</span>
+    <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-carousel-prev"</span><span class="token-tag">&gt;</span>←<span class="token-tag">&lt;/button&gt;</span>
+    <span class="token-tag">&lt;button</span> <span class="token-attr">class</span>=<span class="token-string">"ux-carousel-next"</span><span class="token-tag">&gt;</span>→<span class="token-tag">&lt;/button&gt;</span>
+    <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"ux-carousel-indicators"</span><span class="token-tag">&gt;</span>...<span class="token-tag">&lt;/div&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Offcanvas Section -->
+        <section class="demo-section" id="offcanvas">
+            <h2>Offcanvas / Sidebar</h2>
+            <p class="ux-text-muted">Sliding side panels for navigation or content.</p>
+
+            <div class="demo-box ux-flex ux-gap-4 ux-flex-wrap">
+                <button class="ux-btn ux-btn-primary" data-ux-offcanvas-target="offcanvas-left">Open Left</button>
+                <button class="ux-btn ux-btn-outline" data-ux-offcanvas-target="offcanvas-right">Open Right</button>
+            </div>
+        </section>
+
+        <!-- Copy to Clipboard Section -->
+        <section class="demo-section" id="copy">
+            <h2>Copy to Clipboard</h2>
+            <p class="ux-text-muted">One-click copy functionality with feedback.</p>
+
+            <div class="demo-box ux-flex ux-flex-col ux-gap-4 demo-max-w-400">
+                <div class="ux-copy ux-copy-input">
+                    <input type="text" value="npm install uxcore" readonly>
+                    <button class="ux-copy-button">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="9" y="9" width="13" height="13" rx="2" stroke-width="2" />
+                            <path stroke-width="2" d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                        </svg>
+                        Copy
+                    </button>
+                </div>
+
+                <div class="ux-copy-code ux-copy">
+                    <pre><code>const uxcore = require('uxcore');
+uxcore.init();</code></pre>
+                    <button class="ux-copy-button ux-copy-icon"
+                        data-copy-text="const uxcore = require('uxcore');\nuxcore.init();">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="9" y="9" width="13" height="13" rx="2" stroke-width="2" />
+                            <path stroke-width="2" d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Datepicker Section -->
+        <section class="demo-section" id="datepicker">
+            <h2>Datepicker</h2>
+            <p class="ux-text-muted">A lightweight, zero-dependency date selection component.</p>
+            <div class="demo-box ux-flex ux-flex-col ux-gap-4 demo-max-w-400">
+                <div class="ux-input-group">
+                    <input type="text" class="ux-input ux-datepicker-input" placeholder="Select a date...">
+                    <span class="ux-input-addon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke-width="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6" stroke-width="2"></line>
+                            <line x1="8" y1="2" x2="8" y2="6" stroke-width="2"></line>
+                            <line x1="3" y1="10" x2="21" y2="10" stroke-width="2"></line>
+                        </svg>
+                    </span>
+                </div>
+
+                <div>
+                    <label class="ux-label">With Pre-selected Date</label>
+                    <input type="text" class="ux-input ux-datepicker-input" value="25/12/2024">
+                </div>
+            </div>
+            <div class="code-example">
+                <div class="code-example-header"><span class="code-example-label">HTML</span></div>
+                <pre><code><span class="token-tag">&lt;input</span> <span class="token-attr">type</span>=<span class="token-string">"text"</span> <span class="token-attr">class</span>=<span class="token-string">"ux-input ux-datepicker-input"</span><span class="token-tag">&gt;</span></code></pre>
+            </div>
+        </section>
+
     </main>
 
     <!-- Static Modal -->
@@ -782,8 +1455,53 @@
         </div>
     </div>
 
-    <footer class="ux-p-6 ux-text-center"
-        style="background-color: var(--ux-color-surface); border-top: 1px solid var(--ux-color-border);">
+    <!-- Offcanvas Left -->
+    <div class="ux-offcanvas ux-offcanvas-left" id="offcanvas-left">
+        <div class="ux-offcanvas-header">
+            <h3 class="ux-offcanvas-title">Left Sidebar</h3>
+            <button class="ux-offcanvas-close" data-ux-offcanvas-close>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="ux-offcanvas-body">
+            <p>This is the left sidebar content. You can put navigation, filters, or any other content here.</p>
+        </div>
+    </div>
+
+    <!-- Offcanvas Right -->
+    <div class="ux-offcanvas ux-offcanvas-right" id="offcanvas-right">
+        <div class="ux-offcanvas-header">
+            <h3 class="ux-offcanvas-title">Right Panel</h3>
+            <button class="ux-offcanvas-close" data-ux-offcanvas-close>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="ux-offcanvas-body">
+            <p>This is the right panel content. Great for settings, notifications, or details view.</p>
+        </div>
+        <div class="ux-offcanvas-footer">
+            <button class="ux-btn ux-btn-outline" data-ux-offcanvas-close>Cancel</button>
+            <button class="ux-btn ux-btn-primary">Save</button>
+        </div>
+    </div>
+
+    <!-- Modal for Lightbox -->
+    <div class="ux-modal-overlay" id="lightbox-modal">
+        <div class="ux-modal ux-modal-lg">
+            <button class="ux-modal-close" data-ux-modal-close>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="ux-modal-body"></div>
+        </div>
+    </div>
+
+    <footer class="ux-p-6 ux-text-center ux-bg-surface ux-border-t">
         <p class="ux-m-0 ux-text-sm ux-text-muted">Built with UXCore. Pure HTML/CSS/JS.</p>
     </footer>
 
