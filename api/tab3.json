@@ -1,0 +1,3 @@
+{
+    "content": "<h4>Tab 3 Content (AJAX)</h4><p>Third tab with dynamic content.</p><p>You can disable caching by adding <code>data-cache=\"false\"</code> to the tab button.</p>"
+}

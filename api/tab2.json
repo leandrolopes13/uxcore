@@ -1,0 +1,3 @@
+{
+    "content": "<h4>Tab 2 Content (AJAX)</h4><p>This is the second tab's content, also loaded via AJAX.</p><ul><li>Dynamic data loading</li><li>Caching support</li><li>Loading states</li></ul>"
+}

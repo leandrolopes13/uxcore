@@ -1,0 +1,4 @@
+{
+    "title": "Dynamic Content",
+    "content": "<h4>Content Loaded via AJAX</h4><p>This content was fetched dynamically from <code>/api/modal-content.json</code>.</p><p>You can load any HTML content this way, including forms, tables, or complex layouts.</p>"
+}
